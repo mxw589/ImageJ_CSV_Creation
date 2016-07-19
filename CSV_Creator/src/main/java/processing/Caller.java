@@ -39,9 +39,7 @@ public class Caller {
 
 	public void call(){
 		Reader.read(this);
-		
+		Writer.write(this);
 	}
-	
-	
 	
 }
