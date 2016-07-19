@@ -1,4 +1,4 @@
-package csv_creator;
+
 
 import java.awt.Scrollbar;
 
@@ -73,8 +73,10 @@ public class CSV_creator{
 
 	public static void main(String[] args){
 		new ImageJ();
-		ImagePlus image7 = IJ.openImage();
-		image7.show();
+		ImagePlus image0 = IJ.openImage("/Users/Mark/Documents/Project/Test_Images/BMP/6_FITC-sample.tif");
+		image0.show();
+		ImagePlus image1 = IJ.openImage("/Users/Mark/Documents/Project/Test_Images/BMP/6_FITC-sample-mask.tif");
+		image1.show();
 		IJ.runPlugIn("CSV_creator", "");
 	}
 }
