@@ -41,7 +41,9 @@ public class CSV_creator{
 		 */
 		GenericDialog gd = new GenericDialog("CSV Creation");
 
-		gd.addChoice("Input", imgNames, imgNames[0]);
+		gd.addChoice("Image", imgNames, imgNames[0]);
+		gd.addChoice("Mask", imgNames, imgNames[0]);
+		gd.addStringField("Line", "0");
 		gd.showDialog();
 
 		/*
@@ -50,22 +52,23 @@ public class CSV_creator{
 		 */
 		if(gd.wasOKed()){
 			ImagePlus chosenImg = WindowManager.getImage(gd.getNextChoiceIndex()+1);
+			ImagePlus chosenMask = WindowManager.getImage(gd.getNextChoiceIndex()+1);
+			int line = Integer.parseInt(gd.getNextString());
 
-			ImagePlus result = process(chosenImg);
-
-			result.show();
+			process(chosenImg, chosenMask, line);
 		}
 
 	}
 
-	private ImagePlus process(ImagePlus chosenImg){
+	private void process(ImagePlus chosenImg, ImagePlus chosenMask, int lineChoice){
 		final long start = System.currentTimeMillis();
-
-		ImagePlus resultImg = 
+		
+		Caller caller = new Caller(chosenImg, chosenMask, lineChoice);
+		
+		caller.call();
+		
 		final long end = System.currentTimeMillis();
 		IJ.log("File creation took " + (end-start) + " ms.");
-
-		return resultImg;
 	}
 
 	public static void main(String[] args){

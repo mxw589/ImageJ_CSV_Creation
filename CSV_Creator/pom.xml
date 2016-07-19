@@ -16,11 +16,11 @@
 	<artifactId>simple_commands</artifactId>
 	<version>1.0.0_SNAPSHOT</version>
 
-	<name>Simple ImageJ Commands</name>
-	<description>This example provides an introduction to writing ImageJ commands.</description>
+	<name>CSV Creator</name>
+	<description>This project creates CSV files that are read from single lines of images</description>
 
 	<properties>
-		<main-class>WaterShedPlugin</main-class>
+		<main-class>CSV_creator</main-class>
 		<scijava.jvm.version>1.8</scijava.jvm.version>
 	</properties>
 
