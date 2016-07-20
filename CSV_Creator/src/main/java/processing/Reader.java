@@ -1,6 +1,5 @@
 package processing;
 
-import datatypes.ImageLine;
 import datatypes.PixelPos;
 import datatypes.PixelsValues;
 import ij.process.ImageProcessor;
@@ -31,35 +30,25 @@ public class Reader {
 		double maskH;
 		int number = 0;
 
+		for(int heightP = 0; heightP < height; heightP++){
+			for(int widthP = 0; widthP < width; widthP++){
 
-		for(int widthP = 0; widthP < width; widthP++){
-			for(int heightP = 0; heightP < width; heightP++){
 				h = chosenImg.getf(widthP, heightP);
 				maskH = chosenMask.getf(widthP, heightP);
 
 				pixelPos = new PixelPos(widthP, heightP);
-
+				
 				if(maskH > 0){
-					pixelsValues[widthP][heightP] = new PixelsValues(pixelPos, h, number, 1);
+
+					pixelsValues[widthP][heightP] = new PixelsValues(pixelPos, h, number, "background");
 				} else {
-					pixelsValues[widthP][heightP] = new PixelsValues(pixelPos, h, number, 0);
+					pixelsValues[widthP][heightP] = new PixelsValues(pixelPos, h, number, "foreground");
 				}
 
 				number++;
 			}
 		}
-
-		ImageLine[] imageLines = new ImageLine[height];
-
-		PixelsValues[] horiLine = new PixelsValues[width];
-
-		for(int heightP = 0; heightP < width; heightP++){
-			for(int widthP = 0; widthP < width; widthP++){
-				horiLine[widthP] = pixelsValues[widthP][heightP];
-			}
-			imageLines[heightP] = new ImageLine(horiLine);
-		}
-		caller.setImageLine(imageLines);	
+		caller.setImageLine(pixelsValues);
 	}
 
 }

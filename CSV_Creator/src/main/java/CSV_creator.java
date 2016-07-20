@@ -1,15 +1,12 @@
-
-
-import java.awt.Scrollbar;
-
 import ij.IJ;
 import ij.ImageJ;
 import ij.ImagePlus;
 import ij.WindowManager;
 import ij.gui.GenericDialog;
+import ij.plugin.PlugIn;
 import processing.Caller;
 
-public class CSV_creator{
+public class CSV_creator implements PlugIn{
 
 	public void run(String arg) {
 
@@ -42,7 +39,7 @@ public class CSV_creator{
 		GenericDialog gd = new GenericDialog("CSV Creation");
 
 		gd.addChoice("Image", imgNames, imgNames[0]);
-		gd.addChoice("Mask", imgNames, imgNames[0]);
+		gd.addChoice("Mask", imgNames, imgNames[1]);
 		gd.addStringField("Line", "0");
 		gd.showDialog();
 
