@@ -38,9 +38,10 @@ public class Reader {
 
 				pixelPos = new PixelPos(widthP, heightP);
 				
-				if(maskH > 0){
-
+				if(maskH > 0 && maskH < 80){
 					pixelsValues[widthP][heightP] = new PixelsValues(pixelPos, h, number, "background");
+				} else if(maskH > 81 && maskH < 160){
+					pixelsValues[widthP][heightP] = new PixelsValues(pixelPos, h, number, "border");
 				} else {
 					pixelsValues[widthP][heightP] = new PixelsValues(pixelPos, h, number, "foreground");
 				}
@@ -48,7 +49,7 @@ public class Reader {
 				number++;
 			}
 		}
-		caller.setImageLine(pixelsValues);
+		caller.setReadImage(pixelsValues);
 	}
 
 }

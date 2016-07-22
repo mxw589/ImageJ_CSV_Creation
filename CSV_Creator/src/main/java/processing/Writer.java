@@ -19,9 +19,10 @@ public class Writer {
 			title = title.substring(0, index);				
 		}
 		
-		final String FILE_HEADER = title + "-excel" + ext;
+		final String FILE_HEADER = title + "-line-" + caller.getLine() + ext;
 		
-		final String FILE_LOCATION = "/Users/Mark/Documents/Project/Test_Images/csv/" + FILE_HEADER;
+		final String FILE_LOCATION = "/Users/Mark/Documents/Project/Test_Images/csv/"
+		+ FILE_HEADER;
 		
 		FileWriter fileWriter = null;
 		
@@ -61,11 +62,6 @@ public class Writer {
 				e.printStackTrace();
 			}
 		}
-
-		
-		
-		
-		
 	}
 	
 }

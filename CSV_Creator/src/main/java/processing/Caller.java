@@ -32,13 +32,14 @@ public class Caller {
 		return line;
 	}
 
-	public void setImageLine(PixelsValues[][] readImage) {
+	public void setReadImage(PixelsValues[][] readImage) {
 		this.readImage = readImage;
 	}
 
 	public void call(){
 		Reader.read(this);
 		Writer.write(this);
+		WriterAll.write(this);
 	}
 	
 }
